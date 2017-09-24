@@ -15,18 +15,18 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
-    public function menu()
-    {
-        return view('admin.menu');
-    }
-    public function top()
-    {
-        return view('admin.top');
-    }
-    public function main()
-    {
-        return view('admin.main');
-    }
+    // public function menu()
+    // {
+    //     return view('admin.menu');
+    // }
+    // public function top()
+    // {
+    //     return view('admin.top');
+    // }
+    // public function main()
+    // {
+    //     return view('admin.main');
+    // }
 
 
 }
