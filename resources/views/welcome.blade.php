@@ -36,6 +36,7 @@
         </style>
     </head>
     <body>
+    {{var_dump(session()->all())}}
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
