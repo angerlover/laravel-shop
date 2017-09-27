@@ -42,38 +42,41 @@ class GoodsController extends Controller
         //     'shop_price'=>'required|numeric',
 
         //     ]);
+        // 自定义错误提示(怕英文的看不懂)
         $messages = [
-            'required'=>'商品名称不能为空',
+            'required'=>':attribute不能为空',
+            'max'=>':attribute不能超过:max',
         ];
         $validator = Validator::make($request->all(),
-            ['goods_name'=>'required'],$messages);
+            ['goods_name'=>'required|max:150',
+            'shop_price'=>'required',
+            ],$messages);
         if($validator->fails())
         {
             return redirect('admin/addgoods')
                     ->withErrors($validator)
                     ->withInput();
         }
+
         if($model = LaravelGoods::create($request->all()))
         {
-            // $info = [
-            //     'msg'=>'添加成功啦哈哈',
-            //     'url' => 'admin/addgoods',
-            //     'time' => '3',
-            //     'status' => true,
-            // ];
-            // return redirect('promp')->with('info',$info);
-            echo '添加成功';
+            $info = [
+                'msg'=>'你成功了',
+                'url' => 'admin/goodslist',
+                'time' => '3',
+                'status' => true,
+            ];
+            return redirect('promp')->with('info',$info);
         }
         else
         {
-            // $info = [
-            //             'msg'=>'添加商品失败',
-            //             'url' => 'admin/addgoods',
-            //             'time' => '3',
-            //             'status' => false,
-            //         ];
-            // return redirect('promp')->with('info',$info);
-            echo '添加失败';
+            $info = [
+                        'msg'=>'添加商品失败',
+                        'url' => 'admin/goodslist',
+                        'time' => '3',
+                        'status' => false,
+                    ];
+            return redirect('promp')->with('info',$info);
         }
     }
 }

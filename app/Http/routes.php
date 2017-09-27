@@ -22,7 +22,7 @@ Route::get('/admin/index',"Admin\IndexController@index");
 // Route::get('/admin/main',"Admin\IndexController@main");
 
 /**************后台商品相关******************/
-Route::get('/admin/goodslist',"Admin\GoodsController@lst")->middleware(['age']);
+Route::get('/admin/goodslist',"Admin\GoodsController@lst");
 Route::get('/admin/addgoods',"Admin\GoodsController@add");
 Route::post('/admin/addgoods',"Admin\GoodsController@addPost");
 

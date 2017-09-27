@@ -16,17 +16,21 @@ class PrompController extends Controller
      */
     public function index()
     {
+        $sessions = session()->all();
+        //dd($sessions['info']['msg']);
         // 设置跳转需要的数据
-        $data = [];
-        if(!empty(session('msg')) && !empty(session('url')) && !empty(session('time')))
+        $data = null;
+        if(!empty($sessions['info']['msg']) && !empty($sessions['info']['url']) && !empty($sessions['info']['time']))
         {
             $data = 
                     [
-                        'msg'=>session('msg'),
-                        'url'=>session('url'),
-                        'time'=>session('url'),
-                        'status'=>session('status'),
+                        'msg'=>$sessions['info']['msg'],
+                        'url'=>$sessions['info']['url'],
+                        'time'=>$sessions['info']['time'],
+                        'status'=>$sessions['info']['status'],
                     ];
+
+            return view('promp',['data'=>$data]);
         }
         else
         {

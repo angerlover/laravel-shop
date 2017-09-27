@@ -40,7 +40,7 @@
 </div>
 @endif
 <div class="page-container">
-	<form action="{{url('admin/addgoods')}}" method="post" class="form form-horizontal" id="form-article-add">
+	<form action="{{url('admin/addgoods')}}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
 		{!!csrf_field()!!}
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品名称：</label>
@@ -106,9 +106,9 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品关键字：</label>
+			<label class="form-label col-xs-4 col-sm-2">商品logo</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="" id="" placeholder="多个关键字用英文逗号隔开，限10个关键字" value="" class="input-text">
+				<input name="logo" type="file" id="logo" class="input-text Wdate" style="width:280px;">
 			</div>
 		</div>
 		<div class="row cl">
