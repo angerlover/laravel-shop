@@ -19,7 +19,6 @@ class GoodsProvider extends ServiceProvider
         /* 相当于before_insert方法 */
         LaravelGoods::saving(function ($data)
         {
-            dd($data);
             // 自动生成添加时间和上架
             $data['addtime'] = date('Y-m-d H:i:s',time());
             $data['is_on_sale'] = '是';
@@ -43,7 +42,7 @@ class GoodsProvider extends ServiceProvider
                     $mid_logo = $filePath.'mid_'.$fileName;
                     $big_logo = $filePath.'big_'.$fileName;
 
-                    Image::make($logoPath)->resize(150,150)->save($filePath.'samll_'.$fileName);
+                    Image::make($logoPath)->resize(80,80)->save($filePath.'samll_'.$fileName);
                     Image::make($logoPath)->resize(500,500)->save($filePath.'mid_'.$fileName);
                     Image::make($logoPath)->resize(800,800)->save($filePath.'big_'.$fileName);
 

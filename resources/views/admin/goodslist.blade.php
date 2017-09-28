@@ -29,12 +29,15 @@
 <div >
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 商品管理 <span class="c-gray en">&gt;</span> 商品列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="page-container">
-		<div class="text-c"> 日期范围：
-			<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">
+		<div class="text-c">
+			<form method="get" action="{{url('admin/goodslist')}}">
+		 日期范围：
+			<input name="ftime"  type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">
 			-
-			<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">
-			<input type="text" name="" id="" placeholder=" 商品名称" style="width:250px" class="input-text">
-			<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜商品</button>
+			<input name="ttime" type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">
+			<input type="text" value="{{request()->goods_name}}" name="goods_name" id="" placeholder=" 商品名称" style="width:250px" class="input-text">
+			<button  onclick="javascript:this.parentNode.submit();" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜商品</button>
+			</form> 
 		</div>
 		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="product_add('添加商品','{{url('admin/addgoods')}}')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加商品</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
 		<div class="mt-20">
@@ -46,6 +49,7 @@
 						<th width="60">缩略图</th>
 						<th width="100">商品名称</th>
 						<th>描述</th>
+						<th width="100">发布时间</th>
 						<th width="100">单价</th>
 						<th width="60">发布状态</th>
 						<th width="100">操作</th>
@@ -56,9 +60,10 @@
 					<tr class="text-c va-m">
 						<td><input name="" type="checkbox" value=""></td>
 						<td>{{$v->id}}</td>
-						<td></td>
+						<td> <img src="{{config('constants.IMAGE_PATH').$v['small_logo']}}"> </td>
 						<td class="text-l">{{$v['goods_name']}}</td>
 						<td class="text-l">{{strip_tags($v['goods_desc'])}}</td>
+						<td class="text-l">{{$v['addtime']}}</td>
 						<td><span class="price">{{$v['shop_price']}} </span> </td>
 						@if($v['is_on_sale'] == '是')
 						<?php $content = '已上架';

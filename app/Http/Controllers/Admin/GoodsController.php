@@ -17,7 +17,7 @@ class GoodsController extends Controller
     {
         // 获取商品的数据
         $goodsModel = new LaravelGoods();
-        $data = $goodsModel->all();
+        $data = $goodsModel->search();
         return view('admin.goodslist',['data'=>$data]);
     }
     /**
