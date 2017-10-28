@@ -14,7 +14,7 @@ class GoodsProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()0
+    public function boot()
     {
         /* 相当于before_insert方法 */
         LaravelGoods::saving(function ($data)
