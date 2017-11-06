@@ -110,4 +110,10 @@ class PrompController extends Controller
     {
         //
     }
+
+
+    public function a()
+    {
+        echo "<";
+    }
 }

@@ -28,3 +28,7 @@ Route::post('/admin/addgoods',"Admin\GoodsController@addPost");
 
 /*************助手类*************************/
 Route::get('promp','PrompController@index');
+
+// 测试
+Route::get('a','PrompController@a');
+
